@@ -6,16 +6,15 @@ interface RequestWithBody extends Request {
   body: { [key: string]: number | undefined };
 }
 
-export interface CartObject {
-  subtotal: number;
-  taxes: number;
-  discounts: { [key: string]: number };
-  total: number;
+export interface CartObjectInUSD {
+  subtotal: string;
+  taxes: string;
+  discounts: { [key: string]: string };
+  total: string;
 }
-
 export class CartController {
   @post("/cart")
-  async calculateCartTotal(req: RequestWithBody, res: Response): Promise<CartObject> {
+  static calculateCartTotal(req: RequestWithBody, res: Response): CartObjectInUSD {
     const { apple, orange, strawberry, pineapple } = req.body;
 
     if (!apple && !orange && !strawberry && !pineapple) {
@@ -23,7 +22,7 @@ export class CartController {
       return;
     }
 
-    const calculatedCartTotal = await CartService.CalculateCartTotal(apple, orange, strawberry, pineapple);
+    const calculatedCartTotal = CartService.CalculateCartTotal(apple, orange, strawberry, pineapple);
 
     res.send(calculatedCartTotal);
   }

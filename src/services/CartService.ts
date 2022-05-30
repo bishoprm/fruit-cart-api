@@ -1,16 +1,18 @@
-import { CartObject } from "../controllers/CartController";
+import { CartObjectInUSD } from "../controllers/CartController";
 
 interface PriceObject {
   [key: string]: number;
 }
 
+interface CartObject {
+  subtotal: number;
+  taxes: number;
+  discounts: { [key: string]: number };
+  total: number;
+}
+
 export class CartService {
-  static async CalculateCartTotal(
-    apple?: number,
-    orange?: number,
-    strawberry?: number,
-    pineapple?: number
-  ): Promise<CartObject> {
+  static CalculateCartTotal(apple?: number, orange?: number, strawberry?: number, pineapple?: number): CartObjectInUSD {
     const cartTotal = {
       subtotal: 0,
       taxes: 0,
@@ -80,15 +82,15 @@ export class CartService {
     return { subtotal, taxes, total: subtotal + taxes };
   }
 
-  static formatCartPrices(total: CartObject): CartObject {
+  static formatCartPrices(total: CartObject): CartObjectInUSD {
     return {
-      subtotal: parseFloat(total.subtotal.toFixed(2)),
-      taxes: parseFloat(total.taxes.toFixed(2)),
+      subtotal: `$${total.subtotal.toFixed(2)}`,
+      taxes: `$${total.taxes.toFixed(2)}`,
       discounts: {
-        pineapple: parseFloat(total.discounts.pineapple.toFixed(3)),
-        strawberry: parseFloat(total.discounts.strawberry.toFixed(3)),
+        pineapple: `$${total.discounts.pineapple.toFixed(3)}`,
+        strawberry: `$${total.discounts.strawberry.toFixed(3)}`,
       },
-      total: parseFloat(total.total.toFixed(4)),
+      total: `$${total.total.toFixed(4)}`,
     };
   }
 }
