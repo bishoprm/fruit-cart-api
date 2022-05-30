@@ -4,8 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "tsc": "./node_modules/typescript/bin/tsc",
-    "build": "tsc",
+    "build": "./node_modules/typescript/bin/tsc",
     "start": "npm run build && node dist/app.js",
     "start:dev": "nodemon src/app.ts",
     "test": "jest"

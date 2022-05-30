@@ -4,7 +4,7 @@ import "./controllers/CartController";
 import bodyParser from "body-parser";
 
 const app: Express = express();
-const port: number = Number(process.env.PORT) || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
