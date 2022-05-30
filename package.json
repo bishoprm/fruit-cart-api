@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "start": "npx tsc && node dist/app.js",
+    "start": "tsc && node dist/app.js",
     "start:dev": "nodemon src/app.ts",
     "test": "jest"
   },
