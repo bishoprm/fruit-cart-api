@@ -1,13 +1,13 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import { router } from "./routes/CartRoutes";
 import "./controllers/CartController";
 import bodyParser from "body-parser";
 import cors from "cors";
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port: number = 3000;
 
-const allowedOrigins = ["http://localhost:3001", "https://main--mellifluous-cucurucho-d51433.netlify.app"];
+const allowedOrigins: string[] = ["http://localhost:3001", "https://main--mellifluous-cucurucho-d51433.netlify.app"];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
