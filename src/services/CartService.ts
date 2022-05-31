@@ -76,7 +76,7 @@ export const CalculateCartTotal = (
   return formatCartPrices(cartTotal);
 };
 
-const calculateTax = (itemPrice): number => {
+export const calculateTax = (itemPrice): number => {
   return itemPrice * 0.14;
 };
 

@@ -1,7 +1,7 @@
-import { CartService } from "../services/CartService";
+import { CalculateCartTotal, calculateTax } from "../services/CartService";
 
 test("return bill with valid costs in USD", () => {
-  const cartBill = CartService.CalculateCartTotal(1, 1, 1, 1);
+  const cartBill = CalculateCartTotal(1, 1, 1, 1);
   expect(cartBill.subtotal).toMatch(/^\$/);
   expect(cartBill.taxes).toMatch(/^\$/);
   expect(cartBill.discounts.pineapple).toMatch(/^\$/);
@@ -10,5 +10,5 @@ test("return bill with valid costs in USD", () => {
 });
 
 test("calculate 14% tax", () => {
-  expect(CartService.calculateTax(1)).toBe(0.14);
+  expect(calculateTax(1)).toBe(0.14);
 });
