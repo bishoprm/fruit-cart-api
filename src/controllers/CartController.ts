@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { post } from "./decorators";
-import { CartService } from "../services/CartService";
+import { CalculateCartTotal } from "../services/CartService";
 
 interface RequestWithBody extends Request {
   body: { [key: string]: number | undefined };
@@ -14,7 +14,7 @@ export interface CartObjectInUSD {
 }
 export class CartController {
   @post("/cart")
-  static calculateCartTotal(req: RequestWithBody, res: Response): CartObjectInUSD {
+  calculateCartTotal(req: RequestWithBody, res: Response): CartObjectInUSD {
     const { apple, orange, strawberry, pineapple } = req.body;
 
     if (!apple && !orange && !strawberry && !pineapple) {
@@ -22,7 +22,7 @@ export class CartController {
       return;
     }
 
-    const calculatedCartTotal = CartService.CalculateCartTotal(apple, orange, strawberry, pineapple);
+    const calculatedCartTotal = CalculateCartTotal(apple, orange, strawberry, pineapple);
 
     res.send(calculatedCartTotal);
   }
