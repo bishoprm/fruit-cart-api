@@ -34,5 +34,7 @@ Or use Postman, HTTPie, etc. :)
 ## Frontend
 
 You can also test the api out through a simple little frontend I created:
+
 https://main--mellifluous-cucurucho-d51433.netlify.app/
+
 https://github.com/bishoprm/fruit-cart-frontend
