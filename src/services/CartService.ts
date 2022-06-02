@@ -47,7 +47,9 @@ export const CalculateCartTotal = (
 
   // discount: buy two apples, get one strawberry 50% off
   if (apple >= 2 && strawberry) {
+    // 6
     const numberOfStrawberriesInCart: number = strawberry;
+    // 1
     const amountOfPossibleDiscountedStrawberries: number = apple % 2 === 0 ? apple / 2 : (apple - 1) / 2;
 
     if (amountOfPossibleDiscountedStrawberries >= numberOfStrawberriesInCart) {
@@ -56,7 +58,7 @@ export const CalculateCartTotal = (
       cartTotal.discounts.strawberry = discount;
     } else {
       const nonDiscountedStrawberries: number = numberOfStrawberriesInCart - amountOfPossibleDiscountedStrawberries;
-      const discount: number = (numberOfStrawberriesInCart - nonDiscountedStrawberries) / 2;
+      const discount: number = ((numberOfStrawberriesInCart - nonDiscountedStrawberries) * priceList.strawberry) / 2;
 
       cartTotal.discounts.strawberry = discount;
     }
