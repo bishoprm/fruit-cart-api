@@ -47,9 +47,7 @@ export const CalculateCartTotal = (
 
   // discount: buy two apples, get one strawberry 50% off
   if (apple >= 2 && strawberry) {
-    // 6
     const numberOfStrawberriesInCart: number = strawberry;
-    // 1
     const amountOfPossibleDiscountedStrawberries: number = apple % 2 === 0 ? apple / 2 : (apple - 1) / 2;
 
     if (amountOfPossibleDiscountedStrawberries >= numberOfStrawberriesInCart) {
