@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 const app: Express = express();
-const port: number = 3000;
+const port = process.env.PORT || 3000;
 
 const allowedOrigins: string[] = ["http://localhost:3001", "https://main--mellifluous-cucurucho-d51433.netlify.app"];
 
